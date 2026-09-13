@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Router Detail</title>
+    <style>
+        body { background-color: #b5c7de; font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; background-color: white; }
+        th { background-color: #d3d3d3; }
+    </style>
+</head>
+<body>
+    <h2>Router: {{ ip }}</h2>
+
+    {% if statuses %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Timestamp</th>
+                <th>Interface</th>
+                <th>IP Address</th>
+                <th>Status</th>
+                <th>Protocol</th>
+            </tr>
+            {% for status in statuses %}
+                {% for intf in status.interfaces %}
+                <tr>
+                    <td>{{ status.timestamp }}</td>
+                    <td>{{ intf.interface }}</td>
+                    <td>{{ intf.ip_address }}</td>
+                    <td>{{ intf.status }}</td>
+                    <td>{{ intf.proto }}</td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No status records found for this router yet. Please wait for the worker to process.</p>
+    {% endif %}
+</body>
+</html>
