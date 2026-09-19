@@ -1,4 +1,6 @@
-import time, pika, os
+import time
+import os
+import sys
 from bson import json_util
 from producer import produce
 from database import get_router_info
