@@ -3,6 +3,7 @@ from bson import json_util
 from producer import produce
 from database import get_router_info
 
+
 def scheduler():
     INTERVAL = 10.0
     next_run = time.monotonic()
@@ -21,11 +22,12 @@ def scheduler():
                 produce(rabbitmq_host, body_bytes)
         except Exception as e:
             print(e)
-        
+
         time.sleep(3)
         count += 1
         next_run += INTERVAL
         time.sleep(max(0.0, next_run - time.monotonic()))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     scheduler()
