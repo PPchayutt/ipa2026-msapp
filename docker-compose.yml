@@ -61,6 +61,8 @@ services:
       DB_NAME: "ipa2026_db"
       RABBITMQ_DEFAULT_USER: "${RABBITMQ_DEFAULT_USER}"
       RABBITMQ_DEFAULT_PASS: "${RABBITMQ_DEFAULT_PASS}"
+    deploy: 
+      replicas: 3
 
 volumes:
   mongo-data:

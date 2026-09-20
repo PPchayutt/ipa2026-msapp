@@ -36,7 +36,7 @@ def delete_router(id):
 @app.route("/router/<ip>")
 def router_detail(ip):
     statuses = list(
-        db.interface_status.find({"router_ip": ip}).sort("timestamp", -1).limit(3)
+        db.interface_status.find({"router_ip": ip}).sort("timestamp", -1).limit(5)
     )
     print(f"DEBUG - Searching for IP: {ip}, Found records: {len(statuses)}")
     return render_template("router_detail.html", ip=ip, statuses=statuses)
